@@ -25,6 +25,10 @@ class PostsController < ApplicationController
       render :edit
     end
   end
+  def destroy
+    @post.destroy
+      redirect_to posts_path, notice:"削除しました！"
+  end
   private
   def post_params
     params.require(:post).permit(:title, :content, :image)
