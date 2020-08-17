@@ -3,12 +3,15 @@
   <tr>
     <th>タイトル</th>
     <th>内容</th>
+    <th>画像</th>
   </tr>
 <% @posts.each do |post| %>
   <tr>
     <td><%= post.title %></td>
     <td><%= post.content %></td>
-    <td><%= image_tag post.image.url %></td>
+    <td><%= post.image %></td>
+    <td><%= link_to '詳細を確認する', post_path(post.id) %></td>
   </tr>
 <% end %>
 </table>
+<%= link_to '新しい投稿をする', new_post_path %>
