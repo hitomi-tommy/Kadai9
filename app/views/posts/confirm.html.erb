@@ -1,9 +1,14 @@
 <h3>以下の内容で投稿する。</h3>
-<%= form_with(model: @post, url: posts_path, local: true) do |form| %>
+<%= form_with(model: @post, local: true) do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
-  <p>タイトル:<%= @post.title %></p>
+  <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
+  <%= form.hidden_field :image_cache %>
   <p>本文:<%= @post.content %></p>
+  <p>画像:<%= @post.image %></p>
   <%= form.submit  "登録" %>
-  <%= form.submit '戻る', name: 'back' %>
+<% end %>
+<%= form_with(model: @post, url: new_post_path, local:true, method: "get") do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.submit "戻る", name: 'back' %>
 <% end %>

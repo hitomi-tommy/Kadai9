@@ -1,2 +1,5 @@
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
+<%= link_to 'Create new post', new_post_path %>
+<br>
+<%= link_to 'Back to Main', posts_path %>

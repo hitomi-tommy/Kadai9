@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Picsbook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <header>Picsbook</header>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
@@ -20,6 +21,16 @@
       <%= link_to "Sign up", new_user_path %>
       <%= link_to "Login", new_session_path %>
     <% end %>
-    <%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>運営会社Picsbook株式会社</p>
+      <p>© 2018-2020 Picsbook Corp.</p>
+    </footer>
   </body>
 </html>

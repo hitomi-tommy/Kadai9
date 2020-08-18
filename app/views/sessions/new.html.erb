@@ -1,8 +1,11 @@
-<h1>Log in</h1>
+<h2 class="mt-5">Welcome to Picsbook</h2>
+
+<p class="lead">Please register or sign in to continue.</p>
+
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
   <%= f.label :email %>
   <%= f.email_field :email %>
   <%= f.label :password %>
   <%= f.password_field :password %>
-  <%= f.submit "Log in" %>
+  <%= f.submit "ログイン" %>
 <% end %>

@@ -8,11 +8,12 @@ class PostsController < ApplicationController
   end
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     if params[:back]
       render :new
     else
       if @post.save
-        redirect_to posts_path, notice: "投稿しました！"
+        redirect_to new_post_path, notice: "投稿しました！"
       else
         render :new
       end
@@ -35,11 +36,12 @@ class PostsController < ApplicationController
   end
   def confirm
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     render :new if @post.invalid?
   end
   private
   def post_params
-    params.require(:post).permit(:title, :content, :image)
+    params.require(:post).permit(:title, :content, :image, :image_cache)
   end
   def set_post
     @post = Post.find(params[:id])
